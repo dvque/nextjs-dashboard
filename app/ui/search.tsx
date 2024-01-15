@@ -11,9 +11,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const handleSearch = (term: string) => {
     const params = new URLSearchParams(searchParams)
     if (term) {
-      params.set('search', term)
+      params.set('query', term)
     }else {
-      params.delete('search')
+      params.delete('query')
     }
 
     replace(`${pathName}?${params.toString()}`)
@@ -25,6 +25,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Search
       </label>
       <input
+      defaultValue={searchParams.get('query')?.toString()}
       onChange={(event) => handleSearch(event.target.value)}
         className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
         placeholder={placeholder}
