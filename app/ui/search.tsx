@@ -17,6 +17,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
       params.delete('query')
     }
 
+    params.set('page', '1')
+
     replace(`${pathName}?${params.toString()}`)
   }, 500)
 
